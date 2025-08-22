@@ -40,7 +40,7 @@ def sql_injection_initial(url, method, header_value, body_value, sqlmap_url, id_
 
 def sqlmap_get_status(sqlmap_url):
     try:
-        sqlmap_status = rg.get(sqlmap_url)
+        sqlmap_status = rg.send_request_generic(sqlmap_url, "GET", api_header, None)
         if 'Nothing here' in sqlmap_status.text:
             print('Sqlmap em execução')
             return True
